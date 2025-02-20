@@ -648,18 +648,27 @@ function OrionLib:MakeWindow(WindowConfig)
 
 	AddConnection(CloseBtn.MouseButton1Up, function()
 		MainWindow.Visible = false
+		MobileReopenButton.Visible = true
 		UIHidden = true
 		OrionLib:MakeNotification({
 			Name = "Interface Hidden",
-			Content = "Tap M to reopen the interface",
+			Content = "Tap the open button to reopen the interface. Or Press Key M To Close Or Open",
 			Time = 5
 		})
 		WindowConfig.CloseCallback()
 	end)
 
 	AddConnection(UserInputService.InputBegan, function(Input)
-		if Input.KeyCode == Enum.KeyCode.M and UIHidden then
-			MainWindow.Visible = true
+		if Input.KeyCode == Enum.KeyCode.M then
+			if UIHidden then
+				MainWindow.Visible = true
+				MobileReopenButton.Visible = false
+				UIHidden = false
+			else
+				MainWindow.Visible = false
+				MobileReopenButton.Visible = true
+				UIHidden = true
+			end
 		end
 	end)
 
