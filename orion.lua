@@ -648,7 +648,6 @@ function OrionLib:MakeWindow(WindowConfig)
 
 	AddConnection(CloseBtn.MouseButton1Up, function()
 		MainWindow.Visible = false
-		MobileReopenButton.Visible = true
 		UIHidden = true
 		OrionLib:MakeNotification({
 			Name = "Interface Hidden",
@@ -662,11 +661,9 @@ function OrionLib:MakeWindow(WindowConfig)
 		if Input.KeyCode == Enum.KeyCode.M then
 			if UIHidden then
 				MainWindow.Visible = true
-				MobileReopenButton.Visible = false
 				UIHidden = false
 			else
 				MainWindow.Visible = false
-				MobileReopenButton.Visible = true
 				UIHidden = true
 			end
 		end
